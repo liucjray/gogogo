@@ -15,7 +15,7 @@
 4. SUPERVISOR
     + 配置檔
         - /etc/supervisor/conf.d/go.conf
-``
+```
 [program:go-gogogo]
 directory=/home/{$USER}/codes/go-gogogo/gogogo
 command=/usr/bin/go run /home/{$USER}/codes/go-gogogo/gogogo/index.go
@@ -24,7 +24,7 @@ autorestart=true
 environment=GOPATH="/home/{$USER}/codes",HOME="/home/{$USER}"
 stderr_logfile=/var/log/supervisor/go.err.log
 ;stdout_logfile=/var/log/supervisor/go.out.log
-``
+```
     + 端口報錯檢查
         - `` netstat -tulpn | grep :8080 ``
         - 若是有端口占用問題，則使用 kill {$ID}
@@ -35,9 +35,9 @@ stderr_logfile=/var/log/supervisor/go.err.log
     + 上述報錯開起 stderr_logfile 並確認錯誤原因
 
 2. NGINX
-+ 配置檔使用 proxy_pass 即可
-    - /etc/nginx/sites-available/default
-``
+    + 配置檔使用 proxy_pass 即可
+        - /etc/nginx/sites-available/default
+```
 server {
     listen 80;
     listen [::]:80;
@@ -46,4 +46,4 @@ server {
         proxy_pass http://localhost:8080;
     }
 }
-``
+```
